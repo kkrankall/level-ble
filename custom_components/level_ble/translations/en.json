@@ -1,0 +1,97 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Level account",
+        "description": "Sign in with the same account you use in the Level app. The password is only used to unlock your keychain and is not stored.",
+        "data": {
+          "email": "Email",
+          "password": "Password"
+        }
+      },
+      "device": {
+        "title": "Choose lock",
+        "data": {
+          "device": "Lock"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "Level rejected those credentials.",
+      "cannot_connect": "Could not reach Level's servers.",
+      "tfa": "This account has 2FA enabled; OTP login is not supported yet.",
+      "keychain_failed": "Signed in, but could not unlock the Level keychain. Please open an issue and attach the Home Assistant log.",
+      "unknown": "Unexpected error. Check the Home Assistant log."
+    },
+    "abort": {
+      "already_configured": "This lock is already configured.",
+      "no_devices": "No locks were found on this Level account.",
+      "unknown_device": "Unknown lock."
+    }
+  },
+  "services": {
+    "dump_gatt": {
+      "name": "Dump GATT",
+      "description": "Connect to visible Level locks and return their service and characteristic map.",
+      "fields": {
+        "address": {
+          "name": "Address",
+          "description": "Bluetooth address of one device to dump. Leave empty to dump every device that looks like a Level lock."
+        }
+      }
+    },
+    "handshake": {
+      "name": "Capture handshake",
+      "description": "Run the Bixby user key exchange (M1–M4) with a lock you have set up, or for any other device send M1 and return what it notifies.",
+      "fields": {
+        "address": {
+          "name": "Address",
+          "description": "Bluetooth address of the lock. Required when more than one Level lock is visible."
+        },
+        "duration": {
+          "name": "Duration",
+          "description": "Seconds to wait for each reply from the lock (or to listen, when only capturing)."
+        },
+        "protocol": {
+          "name": "Protocol",
+          "description": "bixby: the binary key exchange the Level app uses for account locks (default). skyline: the older protobuf message, for comparison."
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "battery_level": {
+        "name": "Battery level",
+        "state": {
+          "good": "Good",
+          "low": "Low",
+          "critical": "Critical"
+        }
+      },
+      "last_operated": {
+        "name": "Last operated"
+      },
+      "last_operated_by": {
+        "name": "Last operated by",
+        "state": {
+          "manual": "Manual",
+          "ble": "Bluetooth",
+          "home_kit": "HomeKit",
+          "console": "Console",
+          "auto_lock": "Auto-lock",
+          "matter": "Matter",
+          "approach_to_unlock": "Approach to unlock",
+          "nfc": "NFC",
+          "zigbee": "Zigbee",
+          "touch": "Touch",
+          "remote": "Remote",
+          "ring": "Ring",
+          "alexa": "Alexa",
+          "keypad": "Keypad",
+          "google": "Google"
+        }
+      }
+    }
+  }
+}

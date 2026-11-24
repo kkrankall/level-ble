@@ -1,0 +1,27 @@
+{
+  "entity": {
+    "sensor": {
+      "battery_level": {
+        "default": "mdi:battery",
+        "state": {
+          "low": "mdi:battery-low",
+          "critical": "mdi:battery-alert-variant-outline"
+        }
+      },
+      "last_operated": {
+        "default": "mdi:history"
+      },
+      "last_operated_by": {
+        "default": "mdi:account-key",
+        "state": {
+          "manual": "mdi:hand-back-right",
+          "keypad": "mdi:dialpad",
+          "auto_lock": "mdi:lock-clock",
+          "ble": "mdi:bluetooth",
+          "home_kit": "mdi:apple",
+          "nfc": "mdi:nfc"
+        }
+      }
+    }
+  }
+}
